@@ -2,23 +2,31 @@ package main
 
 import "fmt"
 
-// application entrypoint
 func main() {
-	// var conferenceName = "Go Conference"
-	conferenceName := "Go Conference" // short way
 	const conferenceTickets = 50
 	var remainingTickets uint = 50
+	conferenceName := "Go Conference"
+	bookings := []string{}
 
-	fmt.Printf("conferenceName is %T, conferenceTicktes is %T, remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
-	// conferenceName is string, conferenceTicktes is int, remainingTickets is uint
+	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
 
-	fmt.Printf("Welcome to %v\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
+	var name string
+	var email string
+	var userTickets uint
 
-	var userName string
-	var userTickets int
+	fmt.Println("Enter you name:")
+	fmt.Scanln(&name) // update the value by reference
 
-	userName = "John"
-	userTickets = 2
-	fmt.Printf("User %v booked %v tickets\n", userName, userTickets)
+	fmt.Println("Enter Your Email: ")
+	fmt.Scanln(&email)
+
+	fmt.Println("Enter number of tickets: ")
+	fmt.Scanln(&userTickets)
+
+	remainingTickets = remainingTickets - userTickets
+	bookings = append(bookings, name)
+
+	fmt.Printf("Thank you %v for booking %v tickets. You will receive a confirmation email at %v\n", name, userTickets, email)
+	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+	fmt.Printf("These are all our bookings: %v\n", bookings)
 }
